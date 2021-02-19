@@ -1,7 +1,7 @@
 const doc = document;
 
 const apiKey = "db75852a"
-const baseUrl = "http://www.omdbapi.com/?apikey=" + apiKey + "&";
+const baseUrl = "https://www.omdbapi.com/?apikey=" + apiKey + "&";
 
 
 const filmsContainer = doc.querySelector('.films_container');
