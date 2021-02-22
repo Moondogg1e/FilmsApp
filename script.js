@@ -1,7 +1,7 @@
 const doc = document;
 
 const apiKey = "db75852a"
-const baseUrl = "http://www.omdbapi.com/?apikey=" + apiKey + "&";
+const baseUrl = "https://www.omdbapi.com/?apikey=" + apiKey + "&";
 
 
 const filmsContainer = doc.querySelector('.films_container');
@@ -48,8 +48,12 @@ function up() {
 scrollUp.addEventListener('click', up);
 
 window.addEventListener('scroll', ()=>{
-    scrollUp.hidden = (pageYOffset < document.documentElement.clientHeight);
+    scrollUp.hidden = calculateScroll();
 });
+
+function calculateScroll(){
+    return (pageYOffset < document.documentElement.clientHeight);
+}
 
 // Loader
 const loaded = doc.querySelector('#loader');
@@ -185,6 +189,8 @@ function getFilm(url){
 
 async function fillModal(id) {
     modalWindow.classList.add('display');
+    doc.body.classList.add('modal_open');
+    scrollUp.hidden = true;
     // let film = filmsJSON.Search.find(item => item.imdbID === id);
     console.log(id);
     let film = await getFilm(baseUrl +`i=${id}`);
@@ -207,11 +213,15 @@ async function fillModal(id) {
 
 closeModalWindow.addEventListener('click', ()=>{
     modalWindow.classList.remove('display');
+    doc.body.classList.remove('modal_open');
+    scrollUp.hidden = calculateScroll();
 });
 
 window.onclick = function(event) {
     if(event.target == modalWindow){
         modalWindow.classList.remove('display');
+        doc.body.classList.remove('modal_open');
+        scrollUp.hidden = calculateScroll();
     }
 }
 

@@ -7,6 +7,10 @@ body {
     color: #fff;    
 }
 
+body.modal_open {
+    overflow: hidden;
+}
+
 
 .white_btn{
     padding: 10px 20px;
@@ -165,6 +169,7 @@ option{
     height: 100vh;
     top: 0;
     left: 0;
+    overflow-y: scroll;
 }
 
 .display {
@@ -175,24 +180,31 @@ option{
     position: relative;
     display: flex;    
     padding: 30px;
+    /* flex-wrap: wrap; */
     width: 70%;
     background-color: #373552;
   }
   
 .modal_content img {
-    
+    display: block;    
     margin: 0 20px;
-    min-width: 300px;
-    min-height: 426px;
+    /* min-width: 300px; */
+    /* min-height: 426px; */
     max-height: 450px;
     max-width: 300px;
+    width:100%;
+    height: auto;
+}
+
+.film_description{
+    /* min-width: 285px; */
+    
 }
 
 .film_description>h2{
     display: flex;
     /* justify-content: space-between; */
-    font-size: 20px;
-    min-width: 100px
+    font-size: 20px;    
 }
 
 .film_description>h2>span{
@@ -226,8 +238,6 @@ option{
     animation: spin 1s infinite linear;
 }
 
-
-
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -235,4 +245,35 @@ option{
     to {
         transform: rotate(360deg);
     }
+}
+
+@media only screen and (max-width: 860px){
+
+    .modal_content{
+        flex-wrap: wrap;
+        font-size: 15px !important;
+    }
+
+    .film_description{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .modal_content img{
+        max-height: 300px;
+        width: auto;
+        margin: 0 auto;
+    }
+    .film_description>h2{
+        font-size: 15px;
+        margin-left: 20px;
+    }
+    .film_description>h2>span{
+        margin-left: 2%;
+    }
+
+    #close_modal_window{
+        top: 350px;
+    }
+    
 }
