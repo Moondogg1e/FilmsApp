@@ -16,12 +16,12 @@
     </button>
 
     <!-- <h1 class="search_title">Search</h1> -->
-    <div class="center_banner">
+    <form class="center_banner">
         
-        <h2>Title</h2>
+        <label for="search_title"><h2>Title</h2></label>
         <div id="title_error_text"> Bla bla bla</div>
         <input type="text" placeholder="Enter title" id="search_title" required>
-        <h2>Type</h2>
+        <label for="type"><h2>Type</h2></label>
         <select id="type">
             <option selected value="">All</option>
             <option value="movie">Movie</option>
@@ -29,7 +29,7 @@
             <option value="episode">Episodes</option>
         </select>
         <button class="white_btn search_btn" id="get_films_btn">Search</button>
-    </div>
+    </form>
      
     
     <div class="films_container">

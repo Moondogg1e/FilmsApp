@@ -100,8 +100,8 @@ function checkErrors(response){
     return false;
 }
 
-searchButton.addEventListener('click', async ()=>{
-
+searchButton.addEventListener('click', async (e)=>{
+    e.preventDefault();
     if(searchTitle.value == ""){
         titleErrorText.classList.add('display');
         titleErrorText.innerHTML = "Title should not be empty!";
