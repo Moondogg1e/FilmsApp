@@ -107,8 +107,10 @@ searchButton.addEventListener('click', async (e)=>{
         titleErrorText.innerHTML = "Title should not be empty!";
     }else{
         moreFilmsButton.classList.remove('display');
+        // let filmTitle = searchTitle.value.replace(/ +/g, ' ').trim(); /// deleting Spaces
+        console.log(filmTitle);
         let type = filmType.options[filmType.selectedIndex].value;
-        filmsJSON = await search(baseUrl + `s=${searchTitle.value}&type=${type}`);
+        filmsJSON = await search(baseUrl + `s=${searchTitle.value.replace(/ +/g, ' ').trim()}&type=${type}`);
         console.log(filmsJSON);
         clearFilmsContainer();
         if(!checkErrors(filmsJSON)){
@@ -121,8 +123,10 @@ searchButton.addEventListener('click', async (e)=>{
 });
 
 moreFilmsButton.addEventListener('click', async ()=>{
+    // let filmTitle = searchTitle.value.replace(/ +/g, ' ').trim(); ///deleting Spaces
     let type = filmType.options[filmType.selectedIndex].value;
-    filmsJSON = await search(baseUrl + `s=${searchTitle.value}&type=${type}&page=${++page}`);
+    filmsJSON = await search(baseUrl + `s=${searchTitle.value.replace(/ +/g, ' ').trim()}&type=${type}&page=${++page}`);
+    console.log(filmTitle);
     if(!checkErrors(filmsJSON)){
         addFilms(filmsJSON);
     }    
