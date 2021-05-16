@@ -108,7 +108,7 @@ searchButton.addEventListener('click', async (e)=>{
     }else{
         moreFilmsButton.classList.remove('display');
         // let filmTitle = searchTitle.value.replace(/ +/g, ' ').trim(); /// deleting Spaces
-        console.log(filmTitle);
+        // console.log(filmTitle);
         let type = filmType.options[filmType.selectedIndex].value;
         filmsJSON = await search(baseUrl + `s=${searchTitle.value.replace(/ +/g, ' ').trim()}&type=${type}`);
         console.log(filmsJSON);
@@ -126,7 +126,7 @@ moreFilmsButton.addEventListener('click', async ()=>{
     // let filmTitle = searchTitle.value.replace(/ +/g, ' ').trim(); ///deleting Spaces
     let type = filmType.options[filmType.selectedIndex].value;
     filmsJSON = await search(baseUrl + `s=${searchTitle.value.replace(/ +/g, ' ').trim()}&type=${type}&page=${++page}`);
-    console.log(filmTitle);
+    // console.log(filmTitle);
     if(!checkErrors(filmsJSON)){
         addFilms(filmsJSON);
     }    
